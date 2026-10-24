@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#10241f" />
+  <meta name="description" content="Auditoria independente das afirmações de Lula e Flávio Bolsonaro no debate da Globo de 23 de outubro de 2026, com checagens documentadas, gráficos e metodologia transparente." />
+  <meta property="og:title" content="Entre falas e fatos — Auditoria do debate da Globo" />
+  <meta property="og:description" content="40 afirmações checadas, conclusões auditáveis e fontes abertas. Uma leitura visual do debate presidencial de 2026." />
+  <meta property="og:type" content="website" />
+  <title>Entre falas e fatos — Auditoria do debate | 2026</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink:#13241e; --ink-2:#375047; --deep:#10251f; --deep-2:#193b30;
+      --paper:#f2f0e9; --white:#fffdf8; --line:#d8dcd2; --muted:#64736c;
+      --mint:#bce69a; --lime:#d9f8a2; --green:#28795e; --coral:#cf6554;
+      --amber:#a77823; --shadow:0 22px 65px rgba(26,40,32,.075);
+      --radius:24px;
+    }
+    * { box-sizing:border-box }
+    html { scroll-behavior:smooth }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; font-size:16px; -webkit-font-smoothing:antialiased }
+    a { color:inherit; text-decoration:none }
+    button, input, select { font:inherit }
+    button, a, input, select { -webkit-tap-highlight-color:transparent }
+    button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible { outline:3px solid #d8ad42; outline-offset:3px }
+    ::selection { background:var(--mint); color:var(--ink) }
+    .wrap { max-width:1200px; padding:0 30px; margin:0 auto }
+    .eyebrow { display:inline-flex; align-items:center; gap:11px; font-size:11px; font-weight:800; letter-spacing:.2em; text-transform:uppercase }
+    .eyebrow::before { content:""; width:28px; height:1px; background:currentColor; opacity:.62 }
+    .serif { font-family:Georgia,"Times New Roman",serif; font-weight:400; letter-spacing:-.055em }
+    .muted { color:var(--muted) }
+    .topbar { height:77px; position:sticky; z-index:40; top:0; background:rgba(243,241,234,.91); border-bottom:1px solid rgba(31,66,50,.1); backdrop-filter:blur(20px) }
+    .topbar-inner { height:100%; display:flex; align-items:center; justify-content:space-between; gap:20px }
+    .brand { display:inline-flex; align-items:center; gap:12px; font-size:12px; font-weight:900; letter-spacing:.15em; text-transform:uppercase; white-space:nowrap }
+    .brand-mark { background:var(--deep); color:var(--lime); border-radius:12px; width:36px; height:36px; display:grid; place-items:center; font:italic 26px Georgia,serif }
+    .nav { display:flex; align-items:center; gap:26px; font-size:12px; font-weight:700; color:var(--ink-2) }
+    .nav a:hover { color:var(--green) }
+    .head-actions { display:flex; align-items:center; gap:10px }
+    .print-button { cursor:pointer; padding:10px 15px; display:inline-flex; align-items:center; gap:8px; border:1px solid #c9d1c5; border-radius:999px; background:transparent; color:var(--ink); font-size:12px; font-weight:800; transition:all .18s }
+    .print-button:hover { background:var(--deep); color:white; border-color:var(--deep) }
+    .print-button svg { width:14px; height:14px; fill:none; stroke:currentColor; stroke-width:1.8 }
+    .hero { background:var(--deep); color:#fafcf3; position:relative; overflow:hidden; isolation:isolate }
+    .hero::before { position:absolute; content:""; background:radial-gradient(ellipse,#33644a 0%,rgba(53,100,74,0) 66%); width:820px; height:820px; right:-220px; top:-440px; opacity:.42; z-index:-1 }
+    .hero::after { position:absolute; content:""; width:620px; height:620px; right:-170px; bottom:-400px; border:1px solid rgba(217,248,162,.15); border-radius:50%; box-shadow:0 0 0 75px rgba(217,248,162,.035),0 0 0 165px rgba(217,248,162,.027),0 0 0 255px rgba(217,248,162,.02); pointer-events:none; z-index:-1 }
+    .hero-inner { padding:92px 0 78px; display:grid; grid-template-columns:1.05fr .8fr; align-items:center; gap:75px }
+    .hero .eyebrow { color:var(--lime) }
+    .hero h1 { margin:25px 0 26px; font-size:clamp(66px,7.1vw,108px); line-height:.94; max-width:750px }
+    .hero h1 em { color:var(--lime); font-weight:400 }
+    .hero-subtitle { max-width:540px; color:#b8c9bc; font-size:16px; line-height:1.85 }
+    .hero-meta { display:flex; align-items:center; flex-wrap:wrap; gap:13px; margin-top:37px; font-size:12px; font-weight:700 }
+    .hero-meta span { border:1px solid rgba(255,255,255,.23); border-radius:99px; padding:10px 14px }
+    .hero-cta { margin-top:30px; display:inline-flex; gap:9px; align-items:center; color:var(--lime); font-size:13px; font-weight:800 }
+    .hero-cta::after { content:"↓"; font-size:21px; font-weight:400; transition:transform .2s }
+    .hero-cta:hover::after { transform:translateY(5px) }
+    .edition { position:relative; border:1px solid rgba(224,251,209,.21); padding:30px; border-radius:25px; background:rgba(255,255,255,.045); backdrop-filter:blur(6px); box-shadow:0 38px 68px rgba(0,0,0,.16) }
+    .edition-head { display:flex; justify-content:space-between; align-items:start; gap:10px; border-bottom:1px solid rgba(255,255,255,.17); padding-bottom:22px }
+    .edition-number { font-family:Georgia,serif; font-size:57px; letter-spacing:-.08em; color:var(--lime); line-height:.92 }
+    .edition-small { font-size:10px; color:#9db6a6; font-weight:800; letter-spacing:.15em; text-transform:uppercase }
+    .edition-title { margin:26px 0 11px; font-family:Georgia,serif; font-size:32px; line-height:1.15; letter-spacing:-.045em }
+    .edition-desc { color:#b9c8bb; line-height:1.7; font-size:13px; margin:0 0 24px }
+    .stack-track { width:100%; height:24px; border-radius:6px; display:flex; overflow:hidden; background:#58645f }
+    .stack-track > span { height:100% }
+    .stack-track .t { background:#bce69a; width:30% }
+    .stack-track .f { background:#da8470; width:20% }
+    .stack-track .r { background:#87998d; width:50% }
+    .edition-legend { display:flex; flex-wrap:wrap; gap:15px; font-size:10px; letter-spacing:.02em; margin-top:13px; color:#c1d1c5 }
+    .dot { display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--lime); margin-right:6px }
+    .dot.false { background:#da8470 }.dot.context { background:#87998d }
+    .ticker { border-bottom:1px solid #d4d8ce; background:#e5eae0 }
+    .ticker-inner { padding:13px 0; display:flex; align-items:center; justify-content:space-between; gap:15px; font-size:11px; font-weight:700; letter-spacing:.055em; text-transform:uppercase; color:#486254 }
+    .ticker strong { color:#234e3b }
+    section { scroll-margin-top:100px }
+    .section { padding:105px 0 }
+    .section-head { display:flex; justify-content:space-between; align-items:end; gap:36px; margin-bottom:43px }
+    .section-title { font-size:clamp(42px,5.1vw,70px); line-height:1.07; margin:18px 0 0; max-width:760px }
+    .section-intro { max-width:335px; color:var(--muted); line-height:1.72; font-size:14px; margin:0 }
+    .verdict-band { border:1px solid #ced8c8; background:var(--white); box-shadow:var(--shadow); border-radius:var(--radius); display:grid; grid-template-columns:.89fr 1fr; overflow:hidden }
+    .verdict-copy { padding:50px 44px; background:#ebf1e7 }
+    .verdict-copy h3 { font:400 clamp(31px,3.7vw,49px)/1.11 Georgia,serif; letter-spacing:-.048em; margin:17px 0 18px }
+    .verdict-copy p { color:#496151; line-height:1.83; margin:0; max-width:380px; font-size:14px }
+    .verdict-copy strong { color:var(--deep) }
+    .verdict-visual { padding:45px 43px; display:flex; flex-direction:column; justify-content:center; gap:20px }
+    .candidate-stats { display:grid; grid-template-columns:1fr 1fr; gap:15px }
+    .candidate-stat { padding:20px 18px; background:#f5f5f0; border:1px solid #e4e7e0; border-radius:17px }
+    .stat-name { color:#688075; font-size:11px; letter-spacing:.13em; font-weight:800; text-transform:uppercase }
+    .stat-main { color:var(--deep); font:400 58px/.95 Georgia,serif; letter-spacing:-.07em; margin:11px 0 }
+    .stat-main span { font:500 17px sans-serif; letter-spacing:0; color:#829287 }
+    .stat-caption { color:#53665a; font-size:12px; line-height:1.5 }
+    .sublabel { font-size:10px; letter-spacing:.17em; text-transform:uppercase; font-weight:900; color:var(--muted); margin-bottom:11px }
+    .bars { display:flex; flex-direction:column; gap:17px }
+    .bar-row { display:grid; grid-template-columns:78px 1fr; align-items:center; gap:15px; font-size:12px; font-weight:800 }
+    .bar-track { height:14px; overflow:hidden; border-radius:4px; display:flex; background:#e5e7e0 }
+    .bar-track span { height:100%; display:block }
+    .bar-true { background:#49946b }.bar-false { background:#d97a63 }.bar-other { background:#abb9ad }
+    .bar-legend { display:flex; gap:15px; color:#67786c; font-size:11px; flex-wrap:wrap }
+    .important-note { background:#e5e8dc; border-left:3px solid var(--green); margin-top:24px; padding:15px 19px; font-size:12px; line-height:1.7; color:#4a6152 }
+    .metric-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px }
+    .metric { background:var(--white); min-height:210px; border-radius:19px; padding:24px 23px; border:1px solid #e1e4db; box-shadow:var(--shadow); position:relative; overflow:hidden }
+    .metric::before { content:""; position:absolute; right:-23px; top:-23px; width:97px; height:97px; border:1px solid #e7e9e1; border-radius:50%; box-shadow:0 0 0 20px rgba(200,217,187,.13) }
+    .metric-index { font-size:10px; font-weight:900; color:#83938a; letter-spacing:.14em }
+    .metric-num { font-family:Georgia,serif; letter-spacing:-.07em; font-size:clamp(34px,3.2vw,52px); margin:25px 0 11px; white-space:nowrap }
+    .metric-label { font-size:12px; font-weight:800; color:var(--ink); line-height:1.35 }
+    .metric-note { color:var(--muted); font-size:11px; margin-top:9px; line-height:1.6 }
+    .topic-grid { display:grid; grid-template-columns:repeat(12,1fr); gap:16px }
+    .topic { border-radius:22px; padding:36px 33px; min-height:280px; display:flex; flex-direction:column; justify-content:space-between; gap:28px; overflow:hidden; position:relative }
+    .topic h3 { font-family:Georgia,serif; letter-spacing:-.047em; font-weight:400; font-size:clamp(27px,3vw,37px); line-height:1.13; margin:18px 0 12px }
+    .topic p { line-height:1.7; font-size:13px; max-width:475px; margin:0; opacity:.83 }
+    .topic small { font-weight:800; letter-spacing:.11em; font-size:10px; text-transform:uppercase }
+    .topic.one { grid-column:span 7; background:var(--deep); color:white }
+    .topic.one::after { content:"82,9%"; font:400 125px Georgia,serif; position:absolute; right:-40px; bottom:-48px; opacity:.045; pointer-events:none }
+    .topic.two { grid-column:span 5; background:#d7e6ce; color:#254a35 }
+    .topic.three { grid-column:span 5; background:#e7ded0; color:#4d443c }
+    .topic.four { grid-column:span 7; background:#e7e8dd; color:#24352e; border:1px solid #dce1d4 }
+    .topic .substat { color:inherit; display:inline-block; font:400 38px Georgia,serif; letter-spacing:-.045em; margin-top:15px }
+    .timeline { border-left:1px solid #9eab9e; margin:33px 0 0 8px; display:grid; gap:19px }
+    .timeline-item { margin-left:28px; position:relative; display:grid; grid-template-columns:56px 1fr; gap:15px; align-items:start }
+    .timeline-item::before { content:""; position:absolute; width:9px; height:9px; border-radius:50%; background:#2e8463; box-shadow:0 0 0 5px #dce8d6; left:-33px; top:5px }
+    .timeline-item b { font-size:13px; color:#3b704f }.timeline-item span { color:#516055; font-size:13px; line-height:1.6 }
+    .scoring { background:var(--deep); color:#f4f8ef }
+    .scoring .section-intro { color:#a8c0ae }
+    .comparison { display:grid; grid-template-columns:repeat(2,1fr); gap:16px }
+    .comparison-card { border:1px solid rgba(220,245,206,.23); background:rgba(255,255,255,.045); border-radius:22px; padding:32px; min-height:250px }
+    .comparison-card .eyebrow { font-size:10px; color:var(--lime) }
+    .comparison-card h3 { font:400 34px Georgia,serif; letter-spacing:-.05em; line-height:1.14; margin:24px 0 14px }
+    .comparison-card p { color:#b8cbbb; font-size:13px; line-height:1.8; max-width:490px }
+    .compare-result { display:inline-flex; font-size:11px; font-weight:800; color:var(--lime); border-top:1px solid rgba(255,255,255,.18); padding-top:18px; margin-top:11px }
+    .search-panel { background:var(--white); border:1px solid #dfe3d9; padding:25px; border-radius:22px; box-shadow:var(--shadow) }
+    .filter-row { display:grid; grid-template-columns:1.5fr auto auto; gap:13px; align-items:center }
+    .search-box { position:relative }
+    .search-box svg { width:19px; position:absolute; top:50%; transform:translateY(-50%); left:16px; color:#6e8073 }
+    .search-box input { width:100%; height:46px; border:1px solid #dae1d4; background:#f9faf6; border-radius:11px; color:var(--ink); padding:0 15px 0 47px; outline:0; font-size:13px }
+    .search-box input:focus { border-color:var(--green); box-shadow:0 0 0 3px rgba(60,150,95,.09) }
+    .segment { display:flex; gap:4px; background:#f1f3ed; border:1px solid #dde3d8; border-radius:11px; padding:4px }
+    .segment button { cursor:pointer; white-space:nowrap; border:0; color:#687c6e; background:none; padding:10px 13px; border-radius:8px; font-size:12px; font-weight:800; transition:all .17s }
+    .segment button[aria-pressed="true"] { background:var(--deep); color:#fff; box-shadow:0 4px 8px rgba(17,42,29,.09) }
+    .status-select { background:#f9faf6; border:1px solid #dae1d4; border-radius:11px; padding:12px 14px; color:#43604c; font-size:12px; font-weight:800; height:46px }
+    .results-head { display:flex; justify-content:space-between; align-items:center; gap:15px; margin:25px 0 18px }
+    .results-head p { color:var(--muted); font-size:12px; margin:0 }
+    .reset { cursor:pointer; border:0; background:none; color:var(--green); font-size:12px; font-weight:800; text-decoration:underline; text-underline-offset:3px }
+    .fact-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:13px }
+    .fact { border:1px solid #dfe5da; background:var(--white); border-radius:16px; padding:22px 23px; transition:border-color .2s,box-shadow .2s }
+    .fact:hover { border-color:#aac7ab; box-shadow:0 12px 30px rgba(20,50,31,.06) }
+    .fact-top { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:10px; margin-bottom:14px }
+    .fact-person { color:#536f60; font-size:10px; letter-spacing:.12em; text-transform:uppercase; font-weight:900 }
+    .chip { font-size:10px; font-weight:900; letter-spacing:.015em; border-radius:99px; padding:6px 9px; white-space:nowrap }
+    .chip.true { color:#206b47; background:#e0f0df }.chip.false { color:#a4453b; background:#f9e2dc }.chip.other { color:#805e20; background:#f5edcf }.chip.unsupported { color:#586578; background:#e9ebee }
+    .fact h4 { font-size:16px; line-height:1.42; margin:0 0 10px; letter-spacing:-.017em }
+    .fact p { color:#586c5f; font-size:12px; line-height:1.75; margin:0 0 15px }
+    .fact-bottom { display:flex; justify-content:space-between; align-items:center; gap:15px; border-top:1px solid #edf0e8; padding-top:13px; color:#89978b; font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:.07em }
+    .source-link { color:#386a51; white-space:nowrap; text-decoration:underline; text-underline-offset:2px }
+    .empty-state { grid-column:1/-1; border:1px dashed #b0c0af; padding:34px; text-align:center; background:#f8f9f3; color:var(--muted); border-radius:15px }
+    .extras { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:15px; margin-top:20px }
+    .extra { background:var(--white); border:1px solid #e0e4da; border-radius:18px; padding:25px }
+    .extra b { font-size:13px; line-height:1.5; display:block; margin:14px 0 9px }
+    .extra p { font-size:12px; color:#66786b; line-height:1.7; margin:0 }
+    .extra .source-link { display:inline-block; margin-top:15px; font-size:11px }
+    .method { background:#e6eadf; border-top:1px solid #d4dcd0 }
+    .method-grid { display:grid; grid-template-columns:.78fr 1.15fr; gap:70px; align-items:start }
+    .method h2 { font-size:clamp(43px,5vw,65px); margin:15px 0 19px; line-height:1.1 }
+    .method p { font-size:14px; color:#52695b; line-height:1.85 }
+    .method-list { display:flex; flex-direction:column; gap:0 }
+    .method-list > div { padding:25px 0; border-bottom:1px solid #c9d3c6; display:grid; grid-template-columns:47px 1fr; gap:17px }
+    .method-index { font:400 27px Georgia,serif; color:#698672; line-height:1 }
+    .method-list strong { font-size:15px }
+    .method-list p { font-size:12px; margin:8px 0 0 }
+    .sources-list { display:grid; grid-template-columns:repeat(2,1fr); gap:13px }
+    .source-card { display:flex; justify-content:space-between; align-items:center; gap:15px; background:var(--white); padding:20px 22px; border:1px solid #dee4d9; border-radius:13px; font-size:13px; font-weight:800; transition:all .2s }
+    .source-card small { display:block; font-size:10px; text-transform:uppercase; letter-spacing:.1em; color:#849889; margin-bottom:7px }
+    .source-card:hover { transform:translateY(-2px); border-color:#b7cfb8; box-shadow:var(--shadow) }
+    .source-arrow { font-size:23px; font-weight:300; color:#3e8060 }
+    .bottom-quote { background:#c7e6b1; padding:65px 0 73px }
+    .quote-inner { display:grid; grid-template-columns:1fr auto; align-items:center; gap:30px }
+    .quote-inner p { font:400 clamp(28px,4.5vw,54px)/1.19 Georgia,serif; letter-spacing:-.05em; margin:0; max-width:910px }
+    .quote-inner button { background:var(--deep); border:0; color:white; font-size:12px; border-radius:999px; font-weight:800; padding:16px 20px; cursor:pointer; white-space:nowrap }
+    footer { background:var(--deep); color:#c1d0c5; padding:42px 0 }
+    .footer-inner { display:flex; justify-content:space-between; align-items:center; gap:20px }
+    .footer-inner p { font-size:12px; line-height:1.65; margin:0; max-width:530px }
+    .footer-inner a { color:var(--lime); font-size:12px; font-weight:900 }
+    .reveal { opacity:0; transform:translateY(16px); transition:opacity .65s ease,transform .65s ease }
+    .reveal.show { opacity:1; transform:none }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto } *, *::before,*::after { transition:none!important; animation:none!important } .reveal { opacity:1; transform:none } }
+    @media (max-width:1050px) { .nav{gap:15px}.hero-inner{gap:35px}.metric-grid{grid-template-columns:repeat(2,1fr)}.filter-row{grid-template-columns:1fr 1fr}.search-box{grid-column:1/-1}.status-select{width:100%}.section{padding:80px 0} }
+    @media (max-width:750px) { .wrap{padding:0 19px}.topbar{height:65px}.nav{display:none}.print-button{padding:9px 12px}.hero-inner{grid-template-columns:1fr;padding:64px 0 56px;gap:42px}.hero h1{font-size:clamp(61px,13.5vw,90px)}.edition{max-width:500px}.ticker-inner{flex-wrap:wrap}.section{padding:66px 0}.section-head{display:block;margin-bottom:29px}.section-intro{margin-top:20px;max-width:600px}.verdict-band{grid-template-columns:1fr}.verdict-copy,.verdict-visual{padding:31px 25px}.topic.one,.topic.two,.topic.three,.topic.four{grid-column:span 12}.topic{min-height:245px;padding:28px}.comparison,.fact-list,.method-grid,.sources-list{grid-template-columns:1fr}.extras{grid-template-columns:1fr}.method-grid{gap:25px}.quote-inner{grid-template-columns:1fr}.footer-inner{align-items:start;flex-direction:column}.filter-row{grid-template-columns:1fr}.search-box{grid-column:auto}.segment{justify-content:space-between}.segment button{flex:1}.brand{font-size:11px} }
+    @media (max-width:460px) { .hero-meta span{font-size:10px}.edition{padding:23px}.edition-number{font-size:47px}.edition-title{font-size:27px}.candidate-stats{gap:9px}.candidate-stat{padding:16px 12px}.stat-main{font-size:48px}.metric-grid{gap:10px}.metric{padding:20px 15px;min-height:192px}.metric-num{font-size:37px}.fact{padding:19px}.comparison-card{padding:26px}.topic .substat{font-size:31px} }
+    @media print {
+      @page { size:A4; margin:13mm }
+      :root { --paper:#fff; --white:#fff }
+      body { background:#fff; font-size:11px; -webkit-print-color-adjust:exact!important; print-color-adjust:exact!important }
+      .topbar,.hero-cta,.print-button,.search-panel,.results-head,.reset,.bottom-quote button { display:none!important }
+      .wrap { max-width:100%; padding:0 }
+      .hero { break-after:page; min-height:235mm; display:flex; align-items:center }
+      .hero-inner { width:100%; display:grid; grid-template-columns:1fr; padding:35px 8px; gap:30px }
+      .hero h1 { font-size:64px }.hero-subtitle{font-size:15px}
+      .edition{width:100%;max-width:560px;padding:24px;box-shadow:none;backdrop-filter:none}
+      .edition-head{padding-bottom:10px}.edition-number{font-size:45px}.edition-title{font-size:25px;margin-top:15px}.edition-desc{margin-bottom:10px}
+      .ticker { display:none }
+      section { scroll-margin:0 }
+      .section { padding:22px 0 28px }
+      .section-head{margin-bottom:22px}.section-title,.method h2{font-size:38px}
+      .section-intro{font-size:11px}
+      .verdict-band,.metric,.topic,.comparison-card,.fact,.extra,.source-card { box-shadow:none; break-inside:avoid }
+      .verdict-copy,.verdict-visual{padding:25px}.verdict-copy h3{font-size:28px}.verdict-copy p{font-size:11px}
+      .candidate-stat { padding:15px }.stat-main{font-size:43px}
+      .metric-grid { grid-template-columns:repeat(4,1fr); gap:8px }.metric{padding:14px;min-height:158px}.metric-num{font-size:30px}.metric-label,.metric-note{font-size:9px}
+      .topic-grid{gap:9px}.topic{padding:20px;min-height:170px;gap:12px}.topic h3{font-size:25px}.topic p{font-size:10px}.topic .substat{font-size:26px}.timeline{margin-top:18px;gap:10px}
+      .scoring { padding:35px 0; break-before:page }.comparison-card{padding:22px;min-height:175px}.comparison-card h3{font-size:24px}.comparison-card p{font-size:11px}
+      .fact-list { grid-template-columns:repeat(2,1fr); gap:8px }.fact{padding:12px;min-height:0}.fact h4{font-size:11px;margin-bottom:5px}.fact p{font-size:9px;line-height:1.55;margin-bottom:7px}.fact-top{margin-bottom:8px}.fact-bottom{padding-top:6px;font-size:8px}
+      .chip{font-size:8px}.fact-person{font-size:8px}.extras{grid-template-columns:repeat(3,1fr);gap:8px}.extra{padding:14px}.extra b{font-size:11px}.extra p{font-size:9px}
+      .method{padding:36px 0}.method-grid{gap:25px}.method p,.method-list p{font-size:10px}.method-list>div{padding:15px 0}
+      .sources-list{gap:7px}.source-card{padding:12px;font-size:10px}.bottom-quote{padding:30px 0}.quote-inner p{font-size:29px}
+      footer{padding:25px 0}.footer-inner p{font-size:9px}
+      .reveal { opacity:1!important;transform:none!important }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="#inicio" aria-label="Voltar ao início"><span class="brand-mark">v</span><span>Entre falas<br>e fatos.</span></a>
+      <nav class="nav" aria-label="Navegação principal">
+        <a href="#resumo">Resumo</a><a href="#numeros">Dados</a><a href="#temas">Confrontos</a><a href="#checagens">As checagens</a><a href="#metodo">Método</a>
+      </nav>
+      <div class="head-actions"><button class="print-button" id="printTop" type="button" aria-label="Imprimir e salvar em PDF"><svg viewBox="0 0 24 24"><path d="M7 8V3h10v5M7 17H5a2 2 0 0 1-2-2v-4a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v4a2 2 0 0 1-2 2h-2"/><path d="M7 14h10v7H7z"/></svg> Salvar PDF</button></div>
+    </div>
+  </header>
+
+  <main>
+    <section id="inicio" class="hero">
+      <div class="wrap hero-inner">
+        <div>
+          <div class="eyebrow">Dossiê eleitoral / Edição 01</div>
+          <h1 class="serif">Entre<br><em>falas</em><br>e fatos.</h1>
+          <p class="hero-subtitle">O que resistiu às evidências no último debate presidencial? Uma auditoria visual de Lula e Flávio Bolsonaro — sem empate artificial, com números, contexto e fontes abertas.</p>
+          <div class="hero-meta"><span>TV GLOBO · 23 OUT 2026</span><span>40 CHECAGENS DA LUPA</span><span>ATUALIZADO 24 OUT 2026</span></div>
+          <a class="hero-cta" href="#resumo">Explorar o relatório</a>
+        </div>
+        <aside class="edition" aria-label="Resumo dos resultados">
+          <div class="edition-head"><div><div class="edition-small">O universo analisado</div><div class="edition-number">40<span style="font:400 21px Georgia,serif;color:#bccdbd;letter-spacing:0"> / falas</span></div></div><div class="edition-small" style="text-align:right">Nº 001<br>BRASIL, 2026</div></div>
+          <div class="edition-title">A vantagem factual<br>não foi um empate.</div>
+          <p class="edition-desc">Na seleção verificada pela Agência Lupa, Lula teve mais afirmações confirmadas e Flávio mais afirmações falsas ou problemáticas.</p>
+          <div class="stack-track" role="img" aria-label="Entre 40 falas: 12 verdadeiras, 8 falsas, 20 com ressalvas ou sem provas"><span class="t"></span><span class="f"></span><span class="r"></span></div>
+          <div class="edition-legend"><span><i class="dot"></i> 12 verdadeiras</span><span><i class="dot false"></i> 8 falsas</span><span><i class="dot context"></i> 20 demais</span></div>
+        </aside>
+      </div>
+    </section>
+
+    <div class="ticker"><div class="wrap ticker-inner"><span>Fontes abertas · Lupa · Aos Fatos · Fato ou Fake/g1 · UOL</span><span><strong>Nota editorial:</strong> checagens selecionadas ≠ total de falas proferidas</span></div></div>
+
+    <section id="resumo" class="section">
+      <div class="wrap">
+        <div class="section-head reveal"><div><div class="eyebrow" style="color:var(--green)">01 / O veredito</div><h2 class="section-title serif">Sem falsas<br><em>equivalências.</em></h2></div><p class="section-intro">Imparcialidade é aplicar o mesmo padrão de prova. Não é fabricar um empate quando as evidências revelam diferenças.</p></div>
+        <div class="verdict-band reveal">
+          <div class="verdict-copy"><span class="eyebrow" style="color:#427453">Resultado da auditoria</span><h3>Lula foi <em>mais preciso</em> no conjunto verificado.</h3><p>Flávio apresentou problemas econômicos relevantes e verdadeiros — dívida, Selic e inadimplência —, mas também acumulou <strong>mais afirmações falsas, exageradas ou sem sustentação</strong>. A vantagem de Lula é factual, não uma garantia de melhor governo.</p></div>
+          <div class="verdict-visual">
+            <div class="candidate-stats"><div class="candidate-stat"><div class="stat-name">Lula / 15 checadas</div><div class="stat-main">8<span>/15</span></div><div class="stat-caption">Verdadeiras<br>2 falsas · 5 outras</div></div><div class="candidate-stat"><div class="stat-name">Flávio / 25 checadas</div><div class="stat-main">4<span>/25</span></div><div class="stat-caption">Verdadeiras<br>6 falsas · 15 outras</div></div></div>
+            <div><div class="sublabel">Distribuição de vereditos</div><div class="bars"><div class="bar-row"><span>Lula</span><div class="bar-track" role="img" aria-label="Lula: 8 verdadeiras, 2 falsas, 5 outras"><span class="bar-true" style="width:53.333%"></span><span class="bar-false" style="width:13.333%"></span><span class="bar-other" style="width:33.334%"></span></div></div><div class="bar-row"><span>Flávio</span><div class="bar-track" role="img" aria-label="Flávio: 4 verdadeiras, 6 falsas, 15 outras"><span class="bar-true" style="width:16%"></span><span class="bar-false" style="width:24%"></span><span class="bar-other" style="width:60%"></span></div></div></div><div class="bar-legend" style="margin-top:14px"><span><i class="dot" style="background:#49946b"></i>Verdadeiro</span><span><i class="dot false"></i>Falso</span><span><i class="dot context" style="background:#abb9ad"></i>Ressalvas / sem prova</span></div></div>
+          </div>
+        </div>
+        <div class="important-note reveal"><strong>Como ler os números:</strong> os 40 itens são uma seleção editorial publicada pela Lupa, não uma amostra aleatória de todas as falas. “Insustentável” significa que faltam provas; não equivale automaticamente a “falso”. A síntese acrescenta outras checagens em uma seção separada, sem manipular o denominador.</div>
+      </div>
+    </section>
+
+    <section id="numeros" class="section" style="padding-top:16px">
+      <div class="wrap">
+        <div class="section-head reveal"><div><div class="eyebrow" style="color:var(--green)">02 / O que importa</div><h2 class="section-title serif">Quatro números.<br>Um país complexo.</h2></div><p class="section-intro">Indicadores relevantes para o próximo governo. Dados reais não autorizam explicações simplistas nem promessas sem financiamento.</p></div>
+        <div class="metric-grid">
+          <div class="metric reveal"><div class="metric-index">01 · CONTAS PÚBLICAS</div><div class="metric-num">R$ 11,1 tri</div><div class="metric-label">Dívida bruta em ago/2026</div><div class="metric-note">82,9% do PIB. Flávio acertou o valor aproximado.</div></div>
+          <div class="metric reveal"><div class="metric-index">02 · DÍVIDA PRIVADA</div><div class="metric-num">83,9 mi</div><div class="metric-label">Pessoas inadimplentes</div><div class="metric-note">Dado da Serasa, em agosto de 2026.</div></div>
+          <div class="metric reveal"><div class="metric-index">03 · SEGURANÇA ALIMENTAR</div><div class="metric-num">33,1 mi</div><div class="metric-label">Em fome grave, em 2022</div><div class="metric-note">Pesquisa da Rede Penssan, citada por Lula.</div></div>
+          <div class="metric reveal"><div class="metric-index">04 · COMÉRCIO EXTERIOR</div><div class="metric-num">US$ 348 bi</div><div class="metric-label">Exportações em 2025</div><div class="metric-note">Recorde anual no MDIC; valor arredondado.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="temas" class="section" style="padding-top:20px">
+      <div class="wrap">
+        <div class="section-head reveal"><div><div class="eyebrow" style="color:var(--green)">03 / Análise por pauta</div><h2 class="section-title serif">Onde o debate<br><em>realmente pesou.</em></h2></div><p class="section-intro">Uma boa auditoria distingue fato, inferência, proposta e capacidade de execução. Aqui estão os confrontos mais substantivos.</p></div>
+        <div class="topic-grid">
+          <article class="topic one reveal"><div><small>01 / Economia & contas públicas</small><h3>A dívida é real.<br>O “colapso”, não está demonstrado.</h3><p>Flávio trouxe uma crítica fiscal importante, com números corretos sobre dívida, juros e inadimplência. Mas afirmar que o país está “quebrado” vai além dos indicadores. Lula mostrou políticas em execução, sem responder plenamente à trajetória fiscal.</p></div><div><div class="substat">82,9% do PIB</div></div></article>
+          <article class="topic two reveal"><div><small>02 / Obras públicas</small><h3>O mesmo TCU.<br>Quatro fotografias diferentes.</h3><p>Lula subestimou as obras herdadas. Flávio usou uma contagem antiga como se fosse atual. As fontes e metodologias não são idênticas — é obrigatório informar data e base.</p></div><div><div class="substat">4.215 em abr/26</div></div></article>
+          <article class="topic three reveal"><div><small>03 / Apostas online</small><h3>Nenhum dos dois criou sozinho o “Tigrinho”.</h3><p>A narrativa de atribuir toda a origem das bets ao adversário falhou nos dois lados. A legislação de apostas passou por governos diferentes.</p></div><div><div class="substat">2018 → 2023 → 2026</div></div></article>
+          <article class="topic four reveal"><div><small>04 / Segurança e acusações</small><h3>Proposta não é prova.<br>Suspeita não é sentença.</h3><p>Flávio foi mais específico em propostas punitivas; Lula enfatizou coordenação federativa. Mas os ataques pessoais exigem cautela: não há demonstração suficiente para chamar Flávio categoricamente de miliciano, nem para tratar investigação como condenação.</p></div><div><span style="font-size:11px;font-weight:800;border-bottom:1px solid currentColor;padding-bottom:5px">Padrão de evidência: igual para ambos ↗</span></div></article>
+        </div>
+        <div class="section-head reveal" style="margin-top:80px;margin-bottom:17px"><div><div class="eyebrow" style="color:var(--green)">Entenda a cronologia</div><h3 class="serif" style="font-size:40px;margin:15px 0 0">O caso das apostas.</h3></div><p class="section-intro">“Tigrinho” é um jogo específico; o marco de 2018 autorizou apostas esportivas de quota fixa. Não são conceitos perfeitamente intercambiáveis.</p></div>
+        <div class="timeline reveal"><div class="timeline-item"><b>2018</b><span><strong>Temer:</strong> lei autoriza apostas esportivas de quota fixa.</span></div><div class="timeline-item"><b>2019–22</b><span><strong>Bolsonaro:</strong> o prazo de regulamentação transcorreu sem conclusão.</span></div><div class="timeline-item"><b>2023</b><span><strong>Lula:</strong> nova legislação regula e tributa o setor.</span></div><div class="timeline-item"><b>2026</b><span><strong>Lula:</strong> medida provisória determina proibição, com transição e fiscalização.</span></div></div>
+      </div>
+    </section>
+
+    <section id="avaliacao" class="section scoring">
+      <div class="wrap">
+        <div class="section-head reveal"><div><div class="eyebrow" style="color:var(--lime)">04 / Competência demonstrada</div><h2 class="section-title serif">Quem mostrou<br>mais preparo?</h2></div><p class="section-intro">A resposta depende da dimensão observada. Não estamos prevendo os próximos quatro anos: estamos avaliando o desempenho e as evidências do debate.</p></div>
+        <div class="comparison">
+          <div class="comparison-card reveal"><span class="eyebrow">Critério 01</span><h3>Precisão e disciplina factual</h3><p>Lula teve mais verificações verdadeiras e menos falsas na seleção da Lupa. Cometeu erros importantes sobre PIB, comércio exterior e acusações pessoais, mas a assimetria factual permanece.</p><div class="compare-result">Vantagem observada: Lula</div></div>
+          <div class="comparison-card reveal"><span class="eyebrow">Critério 02</span><h3>Identificação do risco fiscal</h3><p>Flávio fez a cobrança mais forte sobre dívida pública, juros e inadimplência — três problemas concretos. O diagnóstico, contudo, não demonstrou como resolver o problema sem comprometer outras promessas.</p><div class="compare-result">Ponto substantivo de Flávio</div></div>
+          <div class="comparison-card reveal"><span class="eyebrow">Critério 03</span><h3>Instrumentos de execução</h3><p>Lula apresentou mais políticas e mecanismos já formalizados. A experiência administrativa pesa a seu favor nesse aspecto, mas a execução anterior não prova automaticamente resultados futuros.</p><div class="compare-result">Vantagem observada: Lula</div></div>
+          <div class="comparison-card reveal"><span class="eyebrow">Critério 04</span><h3>Financiamento das promessas</h3><p>Grandes promessas dos dois candidatos ficaram sem demonstração completa de custo, fonte de financiamento, prazo e efeito esperado. A aprovação legislativa de várias medidas também não foi esclarecida.</p><div class="compare-result">Sem demonstração suficiente: ambos</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="checagens" class="section">
+      <div class="wrap">
+        <div class="section-head reveal"><div><div class="eyebrow" style="color:var(--green)">05 / Acervo verificável</div><h2 class="section-title serif">Fala por fala.<br><em>Sem atalhos.</em></h2></div><p class="section-intro">Explore as 40 afirmações selecionadas pela Lupa. Busque termos, filtre candidato e veredito. Cada item traz a explicação e o acesso à fonte.</p></div>
+        <div class="search-panel reveal">
+          <div class="filter-row">
+            <label class="search-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg><input id="searchInput" type="search" placeholder="Pesquise por PIB, obras, SUS, dívida, Tigrinho..." autocomplete="off" aria-label="Pesquisar afirmações" /></label>
+            <div class="segment" role="group" aria-label="Filtrar por candidato"><button type="button" class="candidate-filter" data-candidate="todos" aria-pressed="true">Todos</button><button type="button" class="candidate-filter" data-candidate="Lula" aria-pressed="false">Lula</button><button type="button" class="candidate-filter" data-candidate="Flávio" aria-pressed="false">Flávio</button></div>
+            <select id="statusSelect" class="status-select" aria-label="Filtrar por veredito"><option value="todos">Todos os vereditos</option><option value="true">Verdadeiro</option><option value="false">Falso</option><option value="other">Com ressalvas</option><option value="unsupported">Sem sustentação</option></select>
+          </div>
+        </div>
+        <div class="results-head"><p id="resultCount" role="status" aria-live="polite">40 afirmações exibidas</p><button class="reset" id="resetFilters" type="button">Limpar filtros</button></div>
+        <div id="factList" class="fact-list" aria-label="Afirmações verificadas"></div>
+        <div class="section-head reveal" style="margin:88px 0 24px"><div><div class="eyebrow" style="color:var(--green)">Fora do recorte da Lupa</div><h3 class="serif" style="font-size:clamp(32px,4vw,49px);margin:17px 0 0">Checagens complementares.</h3></div><p class="section-intro">Outras redações verificaram afirmações ausentes dessa amostra. Não somamos seleções editoriais diferentes como se fossem uma mesma pesquisa.</p></div>
+        <div class="extras">
+          <div class="extra reveal"><span class="chip true">VERDADEIRO · FLÁVIO</span><b>21,3 mil pontos de internet até 2022</b><p>A quantidade foi confirmada por dados do Ministério das Comunicações.</p><a class="source-link" href="https://www.aosfatos.org/noticias/checamos-flavio-bolsonaro-lula-debate-globo/" target="_blank" rel="noopener noreferrer">Aos Fatos ↗</a></div>
+          <div class="extra reveal"><span class="chip true">VERDADEIRO · FLÁVIO</span><b>Obras: 14,4 mil em 2019 e 8,7 mil em 2022</b><p>Os registros existem; comparar levantamentos distintos exige observar metodologia e abrangência.</p><a class="source-link" href="https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/10/23/veja-o-que-e-fato-ou-fake-nas-falas-de-flavio-bolsonaro-e-lula-no-debate-da-globo-no-2o-turno-das-eleicoes-2026.ghtml" target="_blank" rel="noopener noreferrer">Fato ou Fake ↗</a></div>
+          <div class="extra reveal"><span class="chip other">RESSALVA · FLÁVIO</span><b>PT votou contra o marco do saneamento</b><p>O voto é fato. Não autoriza concluir que todos eram contrários ao saneamento ou ao SUS.</p><a class="source-link" href="https://www.planooesteedc.com.br/nb2/fato-ou-fake/eleicoes/noticia/2026/10/23/veja-o-que-e-fato-ou-fake-nas-falas-de-flavio-bolsonaro-e-lula-no-debate-da-globo-no-2o-turno-das-eleicoes-2026.ghtml" target="_blank" rel="noopener noreferrer">Apuração reproduzida do g1 ↗</a></div>
+          <div class="extra reveal"><span class="chip other">RESSALVA · FLÁVIO</span><b>Feminicídios e homicídios de mulheres</b><p>Feminicídios subiram; homicídios com vítimas mulheres em geral caíram. Indicadores distintos.</p><a class="source-link" href="https://www.aosfatos.org/noticias/checamos-flavio-bolsonaro-lula-debate-globo/" target="_blank" rel="noopener noreferrer">Aos Fatos ↗</a></div>
+          <div class="extra reveal"><span class="chip true">VERDADEIRO · LULA</span><b>Votação sobre benefício de maternidade</b><p>Houve registro de Flávio como único voto contrário à medida mencionada na Alerj.</p><a class="source-link" href="https://www.aosfatos.org/noticias/checamos-flavio-bolsonaro-lula-debate-globo/" target="_blank" rel="noopener noreferrer">Aos Fatos ↗</a></div>
+          <div class="extra reveal"><span class="chip other">RESSALVA · LULA</span><b>R$ 134 milhões do caso Banco Master</b><p>Negociações e repasses para estruturas ligadas a filme não comprovam recebimento pessoal por Flávio.</p><a class="source-link" href="https://veja.abril.com.br/brasil/nunes-marques-derruba-video-de-lula-que-afirma-que-flavio-recebeu-dinheiro-de-vorcaro/" target="_blank" rel="noopener noreferrer">Entenda a decisão preliminar ↗</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="metodo" class="section method">
+      <div class="wrap method-grid">
+        <div class="reveal"><div class="eyebrow" style="color:var(--green)">06 / Transparência</div><h2 class="serif">O método importa tanto quanto o veredito.</h2><p>O resultado é uma interpretação argumentada de evidências publicadas, e não uma votação entre portais. Fontes são identificadas, contradições são explicitadas e alegações graves exigem provas proporcionais.</p></div>
+        <div class="method-list reveal">
+          <div><span class="method-index">01</span><div><strong>Um único debate</strong><p>O recorte é a TV Globo em 23/10/2026. Não misturamos o desempenho com o confronto anterior da Band.</p></div></div>
+          <div><span class="method-index">02</span><div><strong>40 itens de uma única base para o placar</strong><p>A Lupa verificou 15 afirmações de Lula e 25 de Flávio. Outras redações adicionam casos, mas não reescrevem esse denominador.</p></div></div>
+          <div><span class="method-index">03</span><div><strong>Não é prova de intenção de mentir</strong><p>Um enunciado classificado como falso não estabelece, sozinho, dolo. “Insustentável” indica falta de prova, não culpa penal.</p></div></div>
+          <div><span class="method-index">04</span><div><strong>Números precisam de data, métrica e unidade</strong><p>Exemplos: obras de metodologias diferentes, reais versus dólares, projeção versus valor realizado, estoque versus fluxo.</p></div></div>
+          <div><span class="method-index">05</span><div><strong>Debater bem não garante governar bem</strong><p>O juízo de competência é limitado à consistência, ao conhecimento demonstrado e à execução descrita naquela noite.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="fontes" class="section">
+      <div class="wrap">
+        <div class="section-head reveal"><div><div class="eyebrow" style="color:var(--green)">07 / Referências</div><h2 class="section-title serif">Confira<br><em>você mesmo.</em></h2></div><p class="section-intro">Links para as apurações e documentos consultados. A checagem original deve ser lida para as nuances de cada fala.</p></div>
+        <div class="sources-list">
+          <a class="source-card reveal" href="https://www.agencialupa.org/checagem/2026/10/23/ao-vivo-checagem-do-ultimo-debate-entre-lula-e-flavio-bolsonaro-no-segundo-turno/" target="_blank" rel="noopener noreferrer"><span><small>Checagem principal</small>Agência Lupa · 40 verificações</span><span class="source-arrow">↗</span></a>
+          <a class="source-card reveal" href="https://www.aosfatos.org/noticias/checamos-flavio-bolsonaro-lula-debate-globo/" target="_blank" rel="noopener noreferrer"><span><small>Checagem complementar</small>Aos Fatos · Debate da Globo</span><span class="source-arrow">↗</span></a>
+          <a class="source-card reveal" href="https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/10/23/veja-o-que-e-fato-ou-fake-nas-falas-de-flavio-bolsonaro-e-lula-no-debate-da-globo-no-2o-turno-das-eleicoes-2026.ghtml" target="_blank" rel="noopener noreferrer"><span><small>Verificações jornalísticas</small>Fato ou Fake · g1</span><span class="source-arrow">↗</span></a>
+          <a class="source-card reveal" href="https://noticias.uol.com.br/eleicoes/2026/10/24/bets-maioridade-penal-sus-dividas-o-que-flavio-e-lula-falaram-no-debate.htm" target="_blank" rel="noopener noreferrer"><span><small>Propostas efetivamente debatidas</small>UOL · Resumo por tema</span><span class="source-arrow">↗</span></a>
+          <a class="source-card reveal" href="https://sites.tcu.gov.br/listadealtorisco/gestao_das_obras_paralisadas.html" target="_blank" rel="noopener noreferrer"><span><small>Dados públicos</small>Tribunal de Contas da União</span><span class="source-arrow">↗</span></a>
+          <a class="source-card reveal" href="https://agenciadenoticias.ibge.gov.br/agencia-sala-de-imprensa/2013-agencia-de-noticias/releases/45968-pib-cresce-2-3-em-2025-e-fecha-o-ano-em-r-12-7-trilhoes" target="_blank" rel="noopener noreferrer"><span><small>Indicadores macroeconômicos</small>IBGE · PIB 2025</span><span class="source-arrow">↗</span></a>
+          <a class="source-card reveal" href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13756.htm" target="_blank" rel="noopener noreferrer"><span><small>Lei 13.756/2018</small>Marco inicial das apostas de quota fixa</span><span class="source-arrow">↗</span></a>
+          <a class="source-card reveal" href="https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2026/mpv/mpv1394.htm" target="_blank" rel="noopener noreferrer"><span><small>MP 1.394/2026</small>Proibição das apostas de quota fixa</span><span class="source-arrow">↗</span></a>
+        </div>
+        <p class="muted" style="font-size:11px;line-height:1.75;margin-top:28px">Nota: a leitura automatizada da página integral do g1 teve limitações durante a apuração original; foram confrontados trechos recuperáveis, reproduções jornalísticas e outras verificações. Esta publicação representa uma auditoria das declarações identificadas nas fontes, não uma transcrição independente de cada segundo do programa.</p>
+      </div>
+    </section>
+
+    <div class="bottom-quote"><div class="wrap quote-inner"><p>Ser rigoroso com a verdade não é dar razão a todos. É deixar que <em>os fatos decidam.</em></p><button id="printBottom" type="button">Guardar este relatório ↗</button></div></div>
+  </main>
+
+  <footer><div class="wrap footer-inner"><div class="brand" style="color:var(--lime)"><span class="brand-mark" style="background:#d9f8a2;color:var(--deep)">v</span><span>Entre falas<br>e fatos.</span></div><p>Auditoria editorial de caráter informativo. Não é publicação oficial de partido, campanha, TV Globo ou agência de checagem. Dados datados de 24/10/2026.</p><a href="#inicio">Voltar ao topo ↑</a></div></footer>
+
+  <script>
+  'use strict';
+  const LUPA = 'https://www.agencialupa.org/checagem/2026/10/23/ao-vivo-checagem-do-ultimo-debate-entre-lula-e-flavio-bolsonaro-no-segundo-turno/';
+  // A lista representa 40 verificações efetivamente classificadas pela Lupa.
+  // status: true | false | other | unsupported.
+  const facts = [
+    ['Lula','other','Herdamos 6 mil obras paradas','O TCU registrava cerca de 8,6 mil. O número anunciado foi subestimado.'],
+    ['Flávio','other','Há mais de 11,5 mil obras paralisadas agora','A cifra próxima aparece em referência de 2024; o painel atualizado para abril de 2026 apontava 4.215.'],
+    ['Lula','other','Eu tinha acabado com a fome em 2012','O Brasil saiu do Mapa da Fome em relatório de 2014; isso não significava erradicação completa.'],
+    ['Lula','true','Ao voltar ao governo, havia 33 milhões passando fome','Inquérito da Rede Penssan em 2022 indicou 33,1 milhões em insegurança alimentar grave.'],
+    ['Flávio','false','Chocolate foi de 120 g para 80 g devido à inflação atual','Embalagens de 80 g já existiam antes de 2023; o encolhimento dos produtos é fenômeno antigo.'],
+    ['Lula','true','Abrimos 700 novos mercados','O Ministério da Agricultura contabilizou 700 aberturas para produtos agropecuários em 99 destinos.'],
+    ['Lula','other','Nós estamos fazendo a BR-319 que ninguém fez','A rodovia foi construída nos anos 1960–70; as ações recentes envolvem reconstrução e melhorias.'],
+    ['Flávio','other','Lula gastou mais de R$ 400 bilhões para se reeleger','O montante divulgado reúne medidas de diferentes naturezas, inclusive renúncia fiscal, sem provar a intenção eleitoral.'],
+    ['Flávio','other','Bolsonaro deixou Bolsa Família de R$ 600 permanentes','O Auxílio Brasil foi inicialmente de R$ 400; acréscimo de R$ 200 valia apenas até o fim de 2022.'],
+    ['Flávio','true','Nós fizemos o novo Marco Legal do Saneamento','O governo Bolsonaro apresentou o projeto que resultou na lei de 2020, atualizando norma de 2007.'],
+    ['Flávio','true','Centro-Oeste é a região que mais produz alimentos','Liderava o valor bruto da produção agropecuária regional, segundo o Ministério da Agricultura.'],
+    ['Flávio','other','O governo deixa dívida de R$ 11 trilhões','O valor aproximado da dívida bruta é correto; não representa dívida criada integralmente pelo governo atual.'],
+    ['Lula','true','Flávio usou a expressão “bolsa farelo”','Publicações anteriores atribuídas a Flávio registram a expressão depreciativa.'],
+    ['Flávio','true','Selic está em torno de 14%','A taxa básica de juros era de 13,75% ao ano.'],
+    ['Lula','false','O PIB não cresceu acima de 3% desde 2010','Dados do IBGE mostram crescimento superior a 3% em 2011 e 2021, entre outros períodos.'],
+    ['Flávio','other','Se Bolsonaro continuasse, Selic estaria em cerca de 7%','A projeção de mercado de 2022 não demonstra o que ocorreria num governo hipotético.'],
+    ['Flávio','other','Bolsonaro concluiu a transposição do São Francisco','O governo Bolsonaro entregou etapas, mas não concluiu integralmente a transposição.'],
+    ['Lula','true','Nunca se exportou tanto no Brasil','O MDIC registrou US$ 348,3 bilhões exportados em 2025, recorde anual da série.'],
+    ['Flávio','true','Mais de 80 milhões estão com contas atrasadas','A Serasa apontou 83,9 milhões de inadimplentes em agosto de 2026.'],
+    ['Flávio','false','Vídeo de Bolsonaro imitando falta de ar é mentira','As transmissões mostram o então presidente imitando o sintoma durante críticas ao atendimento na pandemia.'],
+    ['Flávio','other','Lula deixou o Brasil quebrado','A situação fiscal é preocupante, mas há crescimento do PIB e outros indicadores incompatíveis com uma conclusão simples de colapso.'],
+    ['Flávio','false','Lula é o pai do Tigrinho','Atribuir a origem do setor a Lula ignora o marco legal de 2018 e a trajetória regulatória.'],
+    ['Lula','false','O Tigrinho foi criado no governo Bolsonaro em 2022','A atribuição de origem a 2022 não corresponde à evolução legal verificada.'],
+    ['Flávio','false','Lula justificou roubo de celular para comprar cerveja','Vídeo editado juntou falas distintas de entrevista de 2017 e alterou seu sentido.'],
+    ['Lula','other','Pobreza na Argentina chegou a 40% sob Milei','O nível foi superado durante a gestão Milei, mas já havia sido atingido no governo anterior e depois caiu.'],
+    ['Lula','other','Superávit comercial foi de quase R$ 85 bilhões','A cifra próxima correspondia à projeção anual em dólares, não a resultado efetivo em reais.'],
+    ['Lula','true','Fizemos a lei da pequena e média empresa','A Lei Complementar 123/2006 foi sancionada durante o governo Lula.'],
+    ['Lula','true','Bolsonaro citou vacinados virando jacaré','A fala ocorreu em 2020, em tom de ironia na discussão sobre cláusulas contratuais e vacinas.'],
+    ['Flávio','unsupported','R$ 30 milhões foram pagos ao Instituto Lula por um filme','Não foi apresentada prova suficiente dos repasses financeiros alegados.'],
+    ['Flávio','false','Juro real do Plano Safra chega perto de 20%','Taxas nominais das linhas verificadas ficavam entre 8% e 12,5%; a taxa real é menor.'],
+    ['Flávio','other','Governo Bolsonaro deu por iniciativa própria reajuste de 33% aos professores','A correção decorreu de regra legal instituída anteriormente, não de simples discricionariedade presidencial.'],
+    ['Lula','true','Anunciamos perdão de dívidas para milhões de MEIs','Uma lei de 21/10/2026 estabeleceu a medida; valores e beneficiários citados eram estimativas aproximadas.'],
+    ['Flávio','other','Está faltando até dipirona nas UBS do país','Relatos locais não comprovam desabastecimento nacional; há competências de estados e municípios.'],
+    ['Flávio','other','População em situação de rua dobrou com Lula','As estimativas comparadas pela Lupa apontaram aumento relevante, mas inferior a 100%.'],
+    ['Flávio','other','Lula é contra reduzir maioridade penal','Lula alterou sua posição e admitiu redução em casos determinados.'],
+    ['Flávio','unsupported','A morte de Ana Clara ocorreu numa troca de tiros','A versão defensiva é contestada pelo Ministério Público e por elementos da investigação.'],
+    ['Flávio','other','Brasil voltou a ser um cemitério de obras','A afirmação exagera o quadro do painel mais recente; metodologias diferentes exigem ressalvas.'],
+    ['Flávio','unsupported','Polícia Federal inocentou o financiamento do filme de Bolsonaro','Não é sustentável afirmar absolvição definitiva diante dos documentos e da investigação em andamento.'],
+    ['Lula','true','Já enviamos ao Senado mecanismo de compra de dívidas','Medida provisória de setembro de 2026 previa aquisição de carteiras de dívidas para renegociação.'],
+    ['Flávio','false','Vou criar a Casa da Mulher Brasileira','A política nacional já existe desde 2013; ampliar unidades não é o mesmo que instituí-la do zero.']
+  ];
+  const labels = { true:'Verdadeiro', false:'Falso', other:'Com ressalvas', unsupported:'Sem sustentação' };
+  const list = document.getElementById('factList');
+  const count = document.getElementById('resultCount');
+  const searchInput = document.getElementById('searchInput');
+  const statusSelect = document.getElementById('statusSelect');
+  const filterButtons = [...document.querySelectorAll('.candidate-filter')];
+  let candidate = 'todos';
+  function escapeHtml(str) { return String(str).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+  function clean(str) { return str.toLocaleLowerCase('pt-BR').normalize('NFD').replace(/[\u0300-\u036f]/g,''); }
+  function renderFacts() {
+    const q = clean(searchInput.value.trim());
+    const status = statusSelect.value;
+    const matches = facts.map((item,i)=>({item,i})).filter(({item})=>
+      (candidate==='todos'||item[0]===candidate) &&
+      (status==='todos'||item[1]===status) &&
+      (!q||clean(item.join(' ')).includes(q))
+    );
+    count.textContent = `${matches.length} ${matches.length===1?'afirmação exibida':'afirmações exibidas'} de 40`;
+    list.innerHTML = matches.length ? matches.map(({item,i})=>{
+      const [person,verdict,title,explanation] = item;
+      return `<article class="fact"><div class="fact-top"><span class="fact-person">${escapeHtml(person)} · fala ${String(i+1).padStart(2,'0')}</span><span class="chip ${verdict}">${labels[verdict]}</span></div><h4>${escapeHtml(title)}</h4><p>${escapeHtml(explanation)}</p><div class="fact-bottom"><span>Fonte: Agência Lupa</span><a href="${LUPA}" class="source-link" target="_blank" rel="noopener noreferrer" aria-label="Abrir checagem da Agência Lupa sobre ${escapeHtml(title)}">Ler verificação ↗</a></div></article>`;
+    }).join('') : '<div class="empty-state"><strong>Nenhuma afirmação encontrada.</strong><p>Tente outro termo ou limpe os filtros.</p></div>';
+  }
+  filterButtons.forEach(button=>button.addEventListener('click',()=>{
+    candidate=button.dataset.candidate;
+    filterButtons.forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
+    renderFacts();
+  }));
+  searchInput.addEventListener('input',renderFacts);
+  statusSelect.addEventListener('change',renderFacts);
+  function resetFilters(){candidate='todos';searchInput.value='';statusSelect.value='todos';filterButtons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.candidate==='todos')));renderFacts();}
+  document.getElementById('resetFilters').addEventListener('click',resetFilters);
+  document.querySelectorAll('#printTop,#printBottom').forEach(btn=>btn.addEventListener('click',()=>{resetFilters();setTimeout(()=>window.print(),60);}));
+  renderFacts();
+  if('IntersectionObserver' in window){
+    const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');observer.unobserve(e.target);}}),{threshold:.08});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+  } else { document.querySelectorAll('.reveal').forEach(el=>el.classList.add('show')); }
+  </script>
+</body>
+</html>
